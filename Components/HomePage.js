@@ -27,17 +27,15 @@ export default function HomePage( {navigation} ) {
     const {value, setValue} = useContext(UserContext)
 
     async function handlePress () {
-        // navigation.navigate('Goal')
-
             usersRef.doc(value).update({
                 goal,
             })
     }
 
-        return <View style={styles.container}>
-            <Text style={styles.goal} >What is your #1 goal to accomplish this week? </Text>
-            <TextInput style={styles.multilineInput} multiline={true} autoCapitalize="none" autoCorrect={false} placeholder="Make it specific and measurable" value={goal} onChangeText={setGoal} />
-            <Button style={styles.button} onPress={handlePress} title="Finish" />
+        return <View>
+            <View style={styles.middle}>
+                <Text style={styles.goal} >What is your #1 goal to accomplish this week? </Text>
+            </View>
         </View>
 }
 
@@ -45,12 +43,13 @@ export default function HomePage( {navigation} ) {
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
+    middle: {
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 30,
+        backgroundColor: 'lightgray',
+        margin: 20,
+        borderRadius: 15,
+        height: 100,
     },
     input: {
         height: 50,
@@ -60,14 +59,6 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderColor: 'gray',
         textAlign: 'center',
-    },
-    multilineInput: {
-        height: 100,
-        width: '100%',
-        borderWidth: 1,
-        padding: 15,
-        marginBottom: 20,
-        borderColor: 'gray',
     },
     button: {
         borderWidth: 2,
