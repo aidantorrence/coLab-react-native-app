@@ -26,6 +26,7 @@ const db = firebase.firestore()
 const messagesRef = db.collection('messages')
 
 export default function App() {
+    const [name, setName] = useState('')
         return (
             <View style={styles.container}>
                 <TextInput style={styles.input} placeholder="Enter your name" value={name} onChangeText={setName} />
