@@ -40,7 +40,7 @@ const usersRef = db.collection('users')
 
 
 export default function App() {
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState({})
 
     return <UserContext.Provider value={{value, setValue}}>
     <NavigationContainer>

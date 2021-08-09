@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { StyleSheet, TextInput, View, Text, Button } from 'react-native'
 import { UserContext } from '../UserContext'
 import * as firebase from 'firebase'
@@ -25,19 +25,28 @@ export default function LandingPage( {navigation} ) {
     const [email, setEmail] = useState('')
     const {value, setValue} = useContext(UserContext)
 
+    // useEffect ( () => {
+    //     usersRef.doc(value.email).get().then( res => {
+    //         setValue(res.data())
+    //     })
+    // }, [])
 
     async function handlePress () {
-        navigation.navigate('NameAndIntroduction')
+
 
         usersRef.doc(email).get().then( res => {
-            setValue(email)
-            usersRef.doc(email).update({
-                email
-            })
-            if (res.exists) {
-                console.log('hello')
+
+            if (res.exists && res.data().email && res.data().goal && res.data().introduction && res.data().name) {
+                navigation.navigate('HomePage')
+                setValue(res.data())
             } else {
+                navigation.navigate('NameAndIntroduction')
+                setValue({email})
+                usersRef.doc(email).set({
+                    email
+                })
             }
+
         })
     }
 

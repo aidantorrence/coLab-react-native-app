@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { StyleSheet, TextInput, View, Text, Button } from 'react-native'
 import { UserContext } from '../UserContext'
 import * as firebase from 'firebase'
@@ -26,16 +26,38 @@ export default function HomePage( {navigation} ) {
     const [goal, setGoal] = useState('')
     const {value, setValue} = useContext(UserContext)
 
-    async function handlePress () {
-            usersRef.doc(value).update({
-                goal,
-            })
-    }
 
-        return <View>
-            <View style={styles.middle}>
-                <Text style={styles.goal} >What is your #1 goal to accomplish this week? </Text>
-            </View>
+
+
+
+        return <View style={styles.wrapper}>
+                <View style={styles.header}>
+                    <View style={styles.headerItem}>
+                        <Text style={styles.goal} >What is your #1 goal to accomplish this week? </Text>
+                    </View>
+                    <View style={styles.headerItem}>
+                        <Text style={styles.goal} >What is your #1 goal to accomplish this week? </Text>
+                    </View>
+                    <View style={styles.headerItem}>
+                        <Text style={styles.goal} >What is your #1 goal to accomplish this week? </Text>
+                    </View>
+                </View>
+                <View style={styles.top}>
+                    <Text style={styles.topText} >{value.goal} </Text>
+                </View>
+
+
+                <View style={styles.middle}>
+                    <Text style={styles.middleText} >Break your goal into smaller pieces. </Text>
+                </View>
+
+
+
+                <View style={styles.bottom}>
+                    <Text style={styles.bottomText} >Waiting to match... </Text>
+                </View>
+
+
         </View>
 }
 
@@ -43,30 +65,63 @@ export default function HomePage( {navigation} ) {
 
 
 const styles = StyleSheet.create({
+    wrapper: {
+        flex: 1,
+    },
+    container: {
+        flex: 1,
+    },
+    header: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 20,
+        borderRadius: 15,
+        flex: .3,
+    },
+    headerItem: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#E5E5E5',
+        margin: 20,
+        borderRadius: 15,
+        flex: 1,
+    },
+    top: {
+        alignItems: 'center',
+        backgroundColor: '#E5E5E5',
+        margin: 20,
+        borderRadius: 15,
+        flex: .7,
+    },
     middle: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'lightgray',
+        backgroundColor: '#E5E5E5',
         margin: 20,
         borderRadius: 15,
-        height: 100,
+        flex: .3,
     },
-    input: {
-        height: 50,
-        width: '100%',
-        borderWidth: 1,
-        padding: 15,
-        marginBottom: 20,
-        borderColor: 'gray',
-        textAlign: 'center',
-    },
-    button: {
-        borderWidth: 2,
-        borderColor: 'black',
+    bottom: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#E5E5E5',
+        margin: 20,
         borderRadius: 15,
+        flex: .9,
     },
-    goal: {
+    topText: {
         fontWeight: 'bold',
-        marginBottom: 10,
-    }
+        marginTop: 40,
+        marginLeft: 20,
+        marginRight: 20,
+        fontSize: 18,
+        textAlign: 'center'
+    },
+    middleText: {
+        fontWeight: 'bold',
+    },
+    bottomText: {
+        fontWeight: 'bold',
+        fontSize: 24,
+    },
 })

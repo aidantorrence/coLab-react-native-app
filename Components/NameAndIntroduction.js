@@ -28,9 +28,9 @@ export default function NameAndIntroduction( {navigation} ) {
 
     async function handlePress () {
         navigation.navigate('Goal')
-        usersRef.doc(value).get().then( res => {
-            console.log(res)
-            usersRef.doc(value).update({
+        usersRef.doc(value.email).get().then( res => {
+            setValue({...value, name, introduction})
+            usersRef.doc(value.email).update({
                 name,
                 introduction,
             })

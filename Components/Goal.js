@@ -28,10 +28,10 @@ export default function Goal( {navigation} ) {
 
     async function handlePress () {
         navigation.navigate('HomePage')
-
-            usersRef.doc(value).update({
-                goal,
-            })
+        setValue({...value, goal})
+        usersRef.doc(value.email).update({
+            goal,
+        })
     }
 
         return <View style={styles.container}>
