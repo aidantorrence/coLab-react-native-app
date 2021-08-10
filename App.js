@@ -8,6 +8,7 @@ import LandingPage from '@components/LandingPage';
 import Introduction from '@components/Introduction';
 import Goal from '@components/Goal';
 import HomePage from '@components/HomePage';
+import AuthScreen from '@screens/AuthScreen';
 
 // Utils
 import { UserContext } from '@contexts/UserContext';
@@ -28,6 +29,7 @@ export default function App() {
       <SampleContext.Provider value={sample}>
         <NavigationContainer>
           <Stack.Navigator>
+            <Screen.Screen name="Auth" component={AuthScreen} />
             <Stack.Screen name="Welcome" component={LandingPage} />
             <Stack.Screen name="Introduction" component={Introduction} />
             <Stack.Screen name="Goal" component={Goal} />

@@ -11,5 +11,6 @@
       "@screens/*":["./screens/*"],
     }
   },
+  "include": ["@assets", "@components", "@config", "@contexts", "@hooks", "@utils", "@screens"],
   "exclude": ["node_modules"]
 }
