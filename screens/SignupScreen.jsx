@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, View, Text, Button, Alert } from 'react-native';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { auth } from '../utils/firebase';
+import { auth, createUserProfileDocument } from '../utils/firebase';
 
 const defaultFormValues = {
   email: '',
@@ -27,13 +27,15 @@ export default function SignupScreen({ navigation }) {
     },
   });
 
-  if (error) {
+  if (error?.message) {
     Alert.alert(error.message);
-    error = undefined;
+    error.message = '';
   }
 
   if (user) {
-    console.log('USER:', user?.user);
+    createUserProfileDocument(user?.user)
+      .then(() => navigation.navigate('Home'))
+      .catch((err) => console.error(err));
   }
 
   if (loading) {
