@@ -4,16 +4,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Components
-import LandingPage from '@components/LandingPage';
-import Introduction from '@components/Introduction';
-import Goal from '@components/Goal';
-import HomePage from '@components/HomePage';
-import AuthScreen from '@screens/AuthScreen';
+import LandingPage from './components/LandingPage';
+import Introduction from './components/Introduction';
+import Goal from './components/Goal';
+import HomePage from './components/HomePage';
+import SignupScreen from './screens/SignupScreen';
 
 // Utils
-import { UserContext } from '@contexts/UserContext';
-import SampleContext from '@contexts/SampleContext';
-import { auth } from '@utils/firebase';
+import { UserContext } from './contexts/UserContext';
+import SampleContext from './contexts/SampleContext';
+import { auth } from './utils/firebase';
 
 const Stack = createStackNavigator();
 
@@ -29,7 +29,7 @@ export default function App() {
       <SampleContext.Provider value={sample}>
         <NavigationContainer>
           <Stack.Navigator>
-            <Screen.Screen name="Auth" component={AuthScreen} />
+            <Stack.Screen name="Signup" component={SignupScreen} options={{ title: 'Sign Up' }} />
             <Stack.Screen name="Welcome" component={LandingPage} />
             <Stack.Screen name="Introduction" component={Introduction} />
             <Stack.Screen name="Goal" component={Goal} />
