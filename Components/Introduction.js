@@ -1,38 +1,43 @@
 import React, { useState } from "react";
 import { StyleSheet, TextInput, View, Text, Button } from "react-native";
-import useCurrentUser from "../hooks/useCurrentUser";
-import { db } from "../utils/firebase";
+export default function Introduction({ navigation }) {
+  const [values, setValues] = useState({
+    name: "",
+    introduction: "",
+  });
 
-const usersRef = db.collection("users");
+  const handleChange = (name) => (value) => {
+    setValues((values) => ({ ...values, [name]: value }));
+  };
 
-export default function Goal({ navigation }) {
-  const [goal, setGoal] = useState("");
-  const { user } = useCurrentUser();
-
-  async function handlePress() {
-    navigation.navigate("HomePage");
-    setValue({ ...value, goal, goalHistory: [] });
-    usersRef.doc(user.email).update({
-      goal,
-      goalHistory: [],
-    });
-  }
+  const handlePress = () => {
+    navigation.navigate("Goal");
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.goal}>
-        What is your #1 goal to accomplish this week?{" "}
+      <Text style={styles.name}>Enter your first name</Text>
+      <TextInput
+        style={styles.input}
+        autoCapitalize="none"
+        autoCorrect={false}
+        placeholder="Your name"
+        value={values.name}
+        onChangeText={handleChange("name")}
+      />
+      <Text style={styles.name}>
+        Please introduce yourself to your accountability peer
       </Text>
       <TextInput
         style={styles.multilineInput}
         multiline={true}
         autoCapitalize="none"
         autoCorrect={false}
-        placeholder="Make it specific and measurable"
-        value={goal}
-        onChangeText={setGoal}
+        placeholder="Let your partner know a little about yourself"
+        value={values.introduction}
+        onChangeText={handleChange("introduction")}
       />
-      <Button style={styles.button} onPress={handlePress} title="Finish" />
+      <Button style={styles.button} onPress={handlePress} title="Next" />
     </View>
   );
 }
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderRadius: 15,
   },
-  goal: {
+  name: {
     fontWeight: "bold",
     marginBottom: 10,
   },
