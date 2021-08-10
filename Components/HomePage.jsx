@@ -52,8 +52,11 @@ export default function HomePage({ navigation }) {
         <View style={styles.footerItem}>
           <Image source={require('../assets/chat_bubble_outline.png')}></Image>
         </View>
-        <View style={styles.footerItem}>
-          <Text style={styles.goal}></Text>
+        <Text style={styles.aboveBottomText} >Partner's Weekly Goal </Text>
+        <View style={styles.bottom}>
+            <View style={styles.bottomUnMatched}>
+                <Text style={styles.bottomUnMatchedText} >Waiting to match... </Text>
+            </View>
         </View>
         <View style={styles.footerItem}>
           <Text style={styles.goal}> </Text>
@@ -64,103 +67,118 @@ export default function HomePage({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-  },
-  footer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 20,
-    borderRadius: 15,
-    flex: 0.3,
-    flexDirection: 'row',
-  },
-  footerItem: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#E5E5E5',
-    margin: 20,
-    flex: 1,
-    height: 90,
-    borderRadius: 45,
-  },
-  top: {
-    alignItems: 'center',
-    backgroundColor: '#E5E5E5',
-    marginLeft: 20,
-    marginBottom: 20,
-    marginRight: 20,
-    borderRadius: 15,
-    flex: 0.7,
-  },
-  topView: {
-    marginTop: 70,
-    width: 20,
-    height: 20,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  topViews: {
-    backgroundColor: '#f1f1f1',
-    width: 50,
-    height: 50,
-    borderRadius: 30,
-    margin: 2,
-  },
-  touchable: {
-    width: 100,
-    height: 100,
-  },
-  middle: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#E5E5E5',
-    margin: 20,
-    borderRadius: 15,
-    flex: 0.3,
-  },
-  bottom: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#E5E5E5',
-    marginBottom: 20,
-    marginLeft: 20,
-    marginRight: 20,
-    borderRadius: 15,
-    flex: 0.9,
-  },
-  aboveTopText: {
-    fontWeight: 'bold',
-    marginTop: 20,
-    marginBottom: 5,
-    fontSize: 14,
-    textAlign: 'center',
-  },
-  topText: {
-    fontWeight: 'bold',
-    marginTop: 40,
-    marginLeft: 20,
-    marginRight: 20,
-    fontSize: 18,
-    textAlign: 'center',
-  },
-  middleText: {
-    fontWeight: 'bold',
-    fontSize: 18,
-  },
-  aboveBottomText: {
-    fontWeight: 'bold',
-    marginTop: 20,
-    marginBottom: 5,
-    fontSize: 14,
-    textAlign: 'center',
-  },
-  bottomText: {
-    fontWeight: 'bold',
-    fontSize: 24,
-  },
-});
+    wrapper: {
+        flex: 1,
+    },
+    container: {
+        flex: 1,
+    },
+    footer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 20,
+        borderRadius: 15,
+        flex: .3,
+        flexDirection: 'row',
+    },
+    footerItem: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#E5E5E5',
+        margin: 20,
+        flex: 1,
+        height: 90,
+        borderRadius: 45,
+    },
+    top: {
+        alignItems: 'center',
+        backgroundColor: '#E5E5E5',
+        marginLeft: 20,
+        marginBottom: 20,
+        marginRight: 20,
+        borderRadius: 15,
+        flex: .7,
+    },
+    topView: {
+        marginTop: 70,
+        width: 20,
+        height: 20,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    topViews: {
+        backgroundColor: '#f1f1f1',
+        width: 50,
+        height: 50,
+        borderRadius: 30,
+        margin: 2,
+    },
+    touchable: {
+        width: 100,
+        height: 100,
+    },
+    middle: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#E5E5E5',
+        margin: 20,
+        borderRadius: 15,
+        flex: .3,
+    },
+    bottom: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#E5E5E5',
+        marginBottom: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        borderRadius: 15,
+        flex: .9,
+    },
+    bottomUnMatched: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#1d1d1d',
+        color: 'white',
+        borderRadius: 15,
+        width: 400,
+        flex: .5,
+    },
+    bottomUnMatchedText: {
+        fontWeight: 'bold',
+        color: 'white',
+        fontSize: 30,
+    },
+    aboveTopText: {
+        fontWeight: 'bold',
+        marginTop: 20,
+        marginBottom: 5,
+        fontSize: 14,
+        textAlign: 'center'
+    },
+    topText: {
+        fontWeight: 'bold',
+        marginTop: 40,
+        marginLeft: 20,
+        marginRight: 20,
+        fontSize: 18,
+        textAlign: 'center'
+    },
+    middleText: {
+        fontWeight: 'bold',
+        fontSize: 18,
+    },
+    aboveBottomText: {
+        fontWeight: 'bold',
+        marginTop: 20,
+        marginBottom: 5,
+        fontSize: 14,
+        textAlign: 'center'
+    },
+    bottomText: {
+        fontWeight: 'bold',
+        fontSize: 24,
+    },
+})
+
