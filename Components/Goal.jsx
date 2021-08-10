@@ -4,10 +4,6 @@ import { StyleSheet, TextInput, View, Text, Button } from 'react-native';
 export default function Goal({ navigation }) {
   const [goal, setGoal] = useState('');
 
-  const handlePress = async () => {
-    navigation.navigate('HomePage');
-  };
-
   return (
     <View style={styles.container}>
       <Text style={styles.goal}>What is your #1 goal to accomplish this week? </Text>
@@ -20,7 +16,7 @@ export default function Goal({ navigation }) {
         value={goal}
         onChangeText={setGoal}
       />
-      <Button style={styles.button} onPress={handlePress} title="Finish" />
+      <Button style={styles.button} onPress={() => navigation.navigate('Home')} title="Finish" />
     </View>
   );
 }

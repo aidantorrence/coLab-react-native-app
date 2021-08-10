@@ -1,9 +1,9 @@
 import React from 'react';
+import { StyleSheet, TextInput, View, Text, Button, Alert } from 'react-native';
 import { useFormik } from 'formik';
-import { StyleSheet, TextInput, View, Text, Button } from 'react-native';
 import * as yup from 'yup';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { auth } from '../utils/firebase';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth, createUserProfileDocument } from '../utils/firebase';
 
 const defaultFormValues = {
   email: '',
@@ -15,16 +15,36 @@ const validationSchema = yup.object().shape({
   password: yup.string().required().min(6),
 });
 
-export default function LoginScreen({ navigation }) {
-  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+export default function SignupScreen({ navigation }) {
+  let [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
 
   const { values, handleSubmit, handleChange } = useFormik({
     initialValues: defaultFormValues,
     validationSchema,
     onSubmit: (values) => {
-      signInWithEmailAndPassword(values.email, values.password);
+      createUserWithEmailAndPassword(values.email, values.password);
     },
   });
+
+  if (error?.message) {
+    Alert.alert(error.message);
+    error.message = '';
+  }
+
+  if (user) {
+    createUserProfileDocument(user?.user)
+      .then(() => navigation.navigate('Home'))
+      .catch((err) => console.error(err));
+  }
+
+  if (loading) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -45,7 +65,7 @@ export default function LoginScreen({ navigation }) {
         onChangeText={handleChange('password')}
         secureTextEntry
       />
-      <Button onPress={handleSubmit} title="Login" style={styles.button} />
+      <Button onPress={handleSubmit} style={styles.button} title="REGISTER" />
     </View>
   );
 }
@@ -53,13 +73,10 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
     padding: 20,
   },
   input: {
-    height: 50,
+    height: 40,
     width: '100%',
     borderWidth: 1,
     padding: 10,
@@ -69,9 +86,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   button: {
-    borderWidth: 2,
-    borderColor: 'black',
-    borderRadius: 15,
-    width: 100,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 5,
+    width: '100%',
+    color: '#111',
+    padding: 10,
   },
 });

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, TextInput, View, Text, Button } from 'react-native';
-import { UserContext } from '@contexts/UserContext';
-import { db } from '@utils/firebase';
+import { UserContext } from '../contexts/UserContext';
+import { db } from '../utils/firebase';
 
 const usersRef = db.collection('users');
 
