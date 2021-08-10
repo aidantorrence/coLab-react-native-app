@@ -78,7 +78,9 @@ export default function HomePage( {navigation} ) {
 
         <Text style={styles.aboveBottomText} >Partner's Weekly Goal </Text>
         <View style={styles.bottom}>
-            <Text style={styles.bottomText} >Waiting to match... </Text>
+            <View style={styles.bottomUnMatched}>
+                <Text style={styles.bottomUnMatchedText} >Waiting to match... </Text>
+            </View>
         </View>
         <View style={styles.footer}>
             <View style={styles.footerItem}>
@@ -166,6 +168,20 @@ const styles = StyleSheet.create({
         marginRight: 20,
         borderRadius: 15,
         flex: .9,
+    },
+    bottomUnMatched: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#1d1d1d',
+        color: 'white',
+        borderRadius: 15,
+        width: 400,
+        flex: .5,
+    },
+    bottomUnMatchedText: {
+        fontWeight: 'bold',
+        color: 'white',
+        fontSize: 30,
     },
     aboveTopText: {
         fontWeight: 'bold',
