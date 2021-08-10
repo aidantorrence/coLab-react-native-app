@@ -1,18 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
-import {
-  StyleSheet,
-  TextInput,
-  View,
-  Text,
-  Button,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import React, { useState, useContext, useEffect } from 'react';
+import { StyleSheet, TextInput, View, Text, Button, Image, TouchableOpacity } from 'react-native';
 
-import useSample from "../hooks/useSample";
-import { db } from "../utils/firebase";
+import useSample from '@hooks/useSample';
+import { db } from '@utils/firebase';
 
-const usersRef = db.collection("users");
+const usersRef = db.collection('users');
 
 function getDate(offset) {
   let today = new Date();
@@ -24,12 +16,12 @@ function getDate(offset) {
 const goalDates = [6, 5, 4, 3, 2, 1, 0].map((item) => getDate(item));
 
 export default function HomePage({ navigation }) {
-  const [goal, setGoal] = useState("");
+  const [goal, setGoal] = useState('');
   const [value, setValue] = useSample();
   const date = new Date().toLocaleDateString();
 
   function handlePress(date) {
-    navigation.navigate("Goal");
+    navigation.navigate('Goal');
   }
 
   return (
@@ -42,17 +34,14 @@ export default function HomePage({ navigation }) {
             <View key={idx} style={styles.topViews}>
               <TouchableOpacity
                 style={styles.touchable}
-                onPress={() => handlePress(item)}
-              ></TouchableOpacity>
+                onPress={() => handlePress(item)}></TouchableOpacity>
             </View>
           ))}
         </View>
       </View>
 
       <View style={styles.middle}>
-        <Text style={styles.middleText}>
-          Break your goal into smaller pieces.{" "}
-        </Text>
+        <Text style={styles.middleText}>Break your goal into smaller pieces. </Text>
       </View>
 
       <Text style={styles.aboveBottomText}>Partner's Weekly Goal </Text>
@@ -61,7 +50,7 @@ export default function HomePage({ navigation }) {
       </View>
       <View style={styles.footer}>
         <View style={styles.footerItem}>
-          <Image source={require("../assets/chat_bubble_outline.png")}></Image>
+          <Image source={require('../assets/chat_bubble_outline.png')}></Image>
         </View>
         <View style={styles.footerItem}>
           <Text style={styles.goal}></Text>
@@ -82,25 +71,25 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   footer: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     margin: 20,
     borderRadius: 15,
     flex: 0.3,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   footerItem: {
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#E5E5E5",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E5E5E5',
     margin: 20,
     flex: 1,
     height: 90,
     borderRadius: 45,
   },
   top: {
-    alignItems: "center",
-    backgroundColor: "#E5E5E5",
+    alignItems: 'center',
+    backgroundColor: '#E5E5E5',
     marginLeft: 20,
     marginBottom: 20,
     marginRight: 20,
@@ -111,12 +100,12 @@ const styles = StyleSheet.create({
     marginTop: 70,
     width: 20,
     height: 20,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   topViews: {
-    backgroundColor: "#f1f1f1",
+    backgroundColor: '#f1f1f1',
     width: 50,
     height: 50,
     borderRadius: 30,
@@ -127,17 +116,17 @@ const styles = StyleSheet.create({
     height: 100,
   },
   middle: {
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#E5E5E5",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E5E5E5',
     margin: 20,
     borderRadius: 15,
     flex: 0.3,
   },
   bottom: {
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#E5E5E5",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E5E5E5',
     marginBottom: 20,
     marginLeft: 20,
     marginRight: 20,
@@ -145,33 +134,33 @@ const styles = StyleSheet.create({
     flex: 0.9,
   },
   aboveTopText: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 20,
     marginBottom: 5,
     fontSize: 14,
-    textAlign: "center",
+    textAlign: 'center',
   },
   topText: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 40,
     marginLeft: 20,
     marginRight: 20,
     fontSize: 18,
-    textAlign: "center",
+    textAlign: 'center',
   },
   middleText: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 18,
   },
   aboveBottomText: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 20,
     marginBottom: 5,
     fontSize: 14,
-    textAlign: "center",
+    textAlign: 'center',
   },
   bottomText: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 24,
   },
 });

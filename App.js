@@ -1,27 +1,24 @@
-import React, { useMemo, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React, { useMemo, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 // Components
-import LandingPage from "./components/LandingPage";
-import Introduction from "./components/Introduction";
-import Goal from "./components/Goal";
-import HomePage from "./components/HomePage";
+import LandingPage from '@components/LandingPage';
+import Introduction from '@components/Introduction';
+import Goal from '@components/Goal';
+import HomePage from '@components/HomePage';
 
 // Utils
-import { UserContext } from "./contexts/UserContext";
-import SampleContext from "./contexts/SampleContext";
-import { auth } from "./utils/firebase";
+import { UserContext } from '@contexts/UserContext';
+import SampleContext from '@contexts/SampleContext';
+import { auth } from '@utils/firebase';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   const [user, loading, error] = useAuthState(auth);
-  const value = useMemo(
-    () => ({ user, loading, error }),
-    [user, loading, error]
-  );
+  const value = useMemo(() => ({ user, loading, error }), [user, loading, error]);
 
   const [sampleValue, setSampleValue] = useState();
   const sample = useMemo(() => [sampleValue, setSampleValue], [sampleValue]);

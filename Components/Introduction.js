@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { StyleSheet, TextInput, View, Text, Button } from "react-native";
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, View, Text, Button } from 'react-native';
 export default function Introduction({ navigation }) {
   const [values, setValues] = useState({
-    name: "",
-    introduction: "",
+    name: '',
+    introduction: '',
   });
 
   const handleChange = (name) => (value) => {
@@ -11,7 +11,7 @@ export default function Introduction({ navigation }) {
   };
 
   const handlePress = () => {
-    navigation.navigate("Goal");
+    navigation.navigate('Goal');
   };
 
   return (
@@ -23,11 +23,9 @@ export default function Introduction({ navigation }) {
         autoCorrect={false}
         placeholder="Your name"
         value={values.name}
-        onChangeText={handleChange("name")}
+        onChangeText={handleChange('name')}
       />
-      <Text style={styles.name}>
-        Please introduce yourself to your accountability peer
-      </Text>
+      <Text style={styles.name}>Please introduce yourself to your accountability peer</Text>
       <TextInput
         style={styles.multilineInput}
         multiline={true}
@@ -35,7 +33,7 @@ export default function Introduction({ navigation }) {
         autoCorrect={false}
         placeholder="Let your partner know a little about yourself"
         value={values.introduction}
-        onChangeText={handleChange("introduction")}
+        onChangeText={handleChange('introduction')}
       />
       <Button style={styles.button} onPress={handlePress} title="Next" />
     </View>
@@ -45,35 +43,35 @@ export default function Introduction({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 30,
   },
   input: {
     height: 50,
-    width: "100%",
+    width: '100%',
     borderWidth: 1,
     padding: 15,
     marginBottom: 20,
-    borderColor: "gray",
-    textAlign: "center",
+    borderColor: 'gray',
+    textAlign: 'center',
   },
   multilineInput: {
     height: 100,
-    width: "100%",
+    width: '100%',
     borderWidth: 1,
     padding: 15,
     marginBottom: 20,
-    borderColor: "gray",
+    borderColor: 'gray',
   },
   button: {
     borderWidth: 2,
-    borderColor: "black",
+    borderColor: 'black',
     borderRadius: 15,
   },
   name: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 10,
   },
 });

@@ -6,7 +6,7 @@ import {
   FIREBASE_MESSAGING_SENDER_ID,
   FIREBASE_APP_ID,
   FIREBASE_MEASURING_ID,
-} from "@env";
+} from '@env';
 
 const config = {
   firebase: {
